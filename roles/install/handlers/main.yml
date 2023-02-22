@@ -1,0 +1,22 @@
+- name: start mongodb
+  service:
+    name: mongod 
+    state: started
+    enabled: yes
+
+- name: restart mongodb
+  systemd:
+    name: mongod
+    daemon_reload: True
+    state: restarted
+
+- name: start firewalld
+  service:
+    name: firewalld
+    state: started
+    enabled: yes
+
+- name: reload firewalld
+  systemd:
+    name: firewalld
+    state: reloaded

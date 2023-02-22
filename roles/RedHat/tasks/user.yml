@@ -1,7 +1,0 @@
----
-- name: Create user and database
-  mongodb_user:
-    database: prueba
-    name: fran
-    password: 12345
-    state: present
