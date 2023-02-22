@@ -1,13 +1,4 @@
-- name: Copy the repository configuration file
-  copy:
-    src: mongodb.org-5.0.repo
-    dest: /etc/yum.repos.d/
-
-- name: Upgrade
-  yum:
-    name: "*"
-    state: latest
-
+---
 - name: Install MongoDB
   yum:
     name: mongodb-org
@@ -16,32 +7,3 @@
 
 - name: Flush handlers
   meta: flush_handlers
-
-- name: Add line to mongod.service file
-  lineinfile:
-    path: /usr/lib/systemd/system/mongod.service
-    line: ExecStartPre=/bin/sh -c "echo 'never' > /sys/kernel/mm/transparent_hugepage/enabled"
-    create: yes
-
-- name: Copy configuration file
-  copy:
-    src: mongod.conf
-    dest: /etc/
-  notify: restart mongodb
-
-- name: Install firewalld
-  yum:
-    name: firewalld
-    state: latest
-  notify: start firewalld
-
-- name: Flush handlers
-  meta: flush_handlers
-
-- name: Allow mongodb service in firewalld
-  firewalld:
-    zone: public
-    service: mongodb
-    permanent: true
-    state: enabled
-  notify: reload firewalld

@@ -1,0 +1,8 @@
+---
+- name: Create admin user and database
+  mongodb_user:  
+    database: "{{ database }}"
+    name: "{{ user }}"
+    password: "{{ password }}"
+    roles: "{{ rol }}"
+  ignore_errors: yes

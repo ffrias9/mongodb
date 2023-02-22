@@ -1,0 +1,19 @@
+---
+- name: Install ufw
+  apt:
+    name: ufw
+    state: latest
+  notify: start ufw
+
+- name: Flush handlers
+  meta: flush_handlers
+
+- name: Allow mongodb service in firewall
+  ufw:
+    rule: allow
+    port: 27017
+    proto: tcp
+  notify: reload ufw
+
+- name: Flush handlers
+  meta: flush_handlers

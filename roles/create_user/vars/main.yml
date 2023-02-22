@@ -1,0 +1,4 @@
+database: admin
+user: admin
+password: 12345
+rol: root

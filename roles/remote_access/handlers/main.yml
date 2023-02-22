@@ -1,0 +1,22 @@
+---
+- name: start firewalld
+  service:
+    name: firewalld
+    state: started
+    enabled: yes
+
+- name: reload firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+
+- name: start ufw
+  service:
+    name: ufw
+    state: started
+    enabled: yes
+
+- name: reload ufw
+  systemd:
+    name: ufw
+    state: reloaded

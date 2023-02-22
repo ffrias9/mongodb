@@ -1,0 +1,12 @@
+---
+- hosts: host
+  become: True
+
+  roles:
+    - role: prerequisites
+
+    - role: install
+
+    - role: remote_access
+
+    - role: create_user

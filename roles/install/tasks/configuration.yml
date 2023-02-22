@@ -1,0 +1,15 @@
+---
+- name: Add line to mongod.service file
+  lineinfile:
+    path: /usr/lib/systemd/system/mongod.service
+    line: ExecStartPre=/bin/sh -c "echo 'never' > /sys/kernel/mm/transparent_hugepage/enabled"
+    create: yes
+
+- name: Copy configuration file
+  copy:
+    src: mongod.conf
+    dest: /etc/
+  notify: restart mongodb
+
+- name: Flush handlers
+  meta: flush_handlers
