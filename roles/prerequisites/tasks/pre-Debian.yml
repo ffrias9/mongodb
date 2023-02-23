@@ -1,25 +1,27 @@
 ---
-- name: Install gnupg
+- name: Debian - Install gnupg
   apt:
     name: gnupg
     state: latest
 
-- name: Import the GPG key of MongoDB
+- name: Debian - Import the GPG key of MongoDB
   apt_key:
     url: "https://www.mongodb.org/static/pgp/server-{{ version }}.asc"
     state: present
 
-- name: Enable the MongoDB repository
+- name: Debian - Enable the MongoDB repository
   lineinfile:
     path: "/etc/apt/sources.list.d/mongodb-org-{{ version }}.list"
     line: "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/{{ version }} main"
     create: yes
 
-- name: Update the repository
+
+
+- name: Debian - Update the repository
   apt:
     update_cache: yes
 
-- name: Install Python3
+- name: Debian - Install Python3
   apt:
     name: "{{ item }}"
     state: latest
@@ -29,7 +31,7 @@
     - python2
     - python-pip
 
-- name: Install pymongo
+- name: Debian - Install pymongo
   pip:
     name: pymongo
     state: latest

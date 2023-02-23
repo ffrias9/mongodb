@@ -1,9 +1,8 @@
 ---
-- name: Install MongoDB
+- name: RedHat - Install MongoDB
   yum:
     name: mongodb-org
     state: latest
   notify: start mongodb
 
-- name: Flush handlers
-  meta: flush_handlers
+- meta: flush_handlers

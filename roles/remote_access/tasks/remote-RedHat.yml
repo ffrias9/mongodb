@@ -1,14 +1,13 @@
 ---
-- name: Install firewalld
+- name: RedHat - Install firewalld
   yum:
     name: firewalld
     state: latest
   notify: start firewalld
 
-- name: Flush handlers
-  meta: flush_handlers
+- meta: flush_handlers
 
-- name: Allow mongodb service in firewalld
+- name: RedHat - Allow mongodb service in firewalld
   firewalld:
     zone: public
     service: mongodb
@@ -16,5 +15,4 @@
     state: enabled
   notify: reload firewalld
 
-- name: Flush handlers
-  meta: flush_handlers
+- meta: flush_handlers

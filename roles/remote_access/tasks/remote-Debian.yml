@@ -1,28 +1,26 @@
 ---
-- name: Install ufw
+- name: Debian - Install ufw
   apt:
     name: ufw
     state: latest
   notify: start ufw
 
-- name: Flush handlers
-  meta: flush_handlers
+- meta: flush_handlers
 
-- name: Allow ssh service
+- name: Debian - Allow ssh service
   ufw:
     rule: allow
     name: ssh
 
-- name: Allow mongodb service in firewall
+- name: Debian - Open MogoDB port
   ufw:
     rule: allow
     port: 27017
     proto: tcp
   notify: reload ufw
 
-- name: Enable ufw
+- name: Debian - Enable ufw
   ufw:
     state: enabled
 
-- name: Flush handlers
-  meta: flush_handlers
+- meta: flush_handlers

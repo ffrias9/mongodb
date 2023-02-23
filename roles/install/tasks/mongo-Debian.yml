@@ -1,5 +1,5 @@
 ---
-- name: Install MongoDB
+- name: Debian - Install MongoDB
   apt:
     name: "{{ item }}"
     state: latest
@@ -12,5 +12,4 @@
     - mongodb-org-tools
   notify: start mongodb
 
-- name: Flush handlers
-  meta: flush_handlers
+- meta: flush_handlers

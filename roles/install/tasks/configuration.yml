@@ -5,6 +5,7 @@
     insertbefore: "^ExecStart=/usr/bin/mongod --config /etc/mongod.conf"
     line: ExecStartPre=/bin/sh -c "echo 'never' > /sys/kernel/mm/transparent_hugepage/enabled"
     create: yes
+  when: ansible_os_family == "RedHat"
 
 - name: Copy configuration file
   copy:
@@ -12,5 +13,4 @@
     dest: /etc/mongod.conf
   notify: restart mongodb
 
-- name: Flush handlers
-  meta: flush_handlers
+- meta: flush_handlers
