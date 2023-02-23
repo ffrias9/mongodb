@@ -2,13 +2,14 @@
 - name: Add line to mongod.service file
   lineinfile:
     path: /usr/lib/systemd/system/mongod.service
+    insertbefore: "^ExecStart=/usr/bin/mongod --config /etc/mongod.conf"
     line: ExecStartPre=/bin/sh -c "echo 'never' > /sys/kernel/mm/transparent_hugepage/enabled"
     create: yes
 
 - name: Copy configuration file
   copy:
-    src: mongod.conf
-    dest: /etc/
+    src: "{{ ansible_os_family}}-mongod.conf"
+    dest: /etc/mongod.conf
   notify: restart mongodb
 
 - name: Flush handlers
