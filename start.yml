@@ -3,6 +3,8 @@
   become: True
 
   roles:
+    - role: check_OS
+
     - role: prerequisites
 
     - role: install
