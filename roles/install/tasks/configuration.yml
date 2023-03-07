@@ -1,10 +1,8 @@
 ---
-- name: Add line to mongod.service file
-  lineinfile:
-    path: /usr/lib/systemd/system/mongod.service
-    insertbefore: "^ExecStart=/usr/bin/mongod --config /etc/mongod.conf"
-    line: ExecStartPre=/bin/sh -c "echo 'never' > /sys/kernel/mm/transparent_hugepage/enabled"
-    create: yes
+- name: Copy mongod.service file
+  copy:
+    src: mongod.service
+    dest: /lib/systemd/system/mongod.service
   when: ansible_os_family == "RedHat"
 
 - name: Copy configuration file

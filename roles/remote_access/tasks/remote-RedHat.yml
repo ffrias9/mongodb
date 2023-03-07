@@ -5,7 +5,13 @@
     state: latest
   notify: start firewalld
 
-- meta: flush_handlers
+- name: start firewalld
+  service:
+    name: firewalld
+    state: started
+    enabled: yes
+
+    #- meta: flush_handlers
 
 - name: RedHat - Allow mongodb service in firewalld
   firewalld:
