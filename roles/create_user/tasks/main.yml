@@ -5,3 +5,4 @@
     name: "{{ user }}"
     password: "{{ password }}"
     roles: "{{ rol }}"
+    state: present
