@@ -1,6 +1,6 @@
 ---
 - name: Create admin user and database
-  mongodb.mongodb_user:
+  mongodb_user:
     database: "{{ database }}"
     name: "{{ user }}"
     password: "{{ password }}"
