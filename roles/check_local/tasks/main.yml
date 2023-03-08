@@ -1,0 +1,5 @@
+---
+- name: check mongodb
+  local_action:
+    module: package
+    name: mongodb-org
