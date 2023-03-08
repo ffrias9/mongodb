@@ -11,11 +11,8 @@
 
 - name: RedHat - Install Python3
   yum:
-    name: "{{ item }}"
+    name: python3
     state: latest
-  with_items:
-    - python3
-    - python2
 
 - name: RedHat - Install pymongo
   pip:
