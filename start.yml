@@ -3,7 +3,7 @@
   become: True
 
   roles:
-    - role: check_local
+          #- role: check_local
 
     - role: check_OS
 
