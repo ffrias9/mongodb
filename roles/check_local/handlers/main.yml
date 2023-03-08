@@ -1,0 +1,14 @@
+---
+- name: start mongodb
+  local_action:
+    module: service
+    name: mongod 
+    state: started
+    enabled: yes
+
+- name: restart mongodb
+  local_action:
+    module: systemd
+    name: mongod
+    daemon_reload: True
+    state: restarted

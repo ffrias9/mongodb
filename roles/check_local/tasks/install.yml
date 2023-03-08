@@ -1,0 +1,33 @@
+---
+- name: RedHat - Copy the repository configuration file
+  local_action:
+    module: copy
+    src: mongodb.org-5.0.repo
+    dest: /etc/yum.repos.d/
+
+- name: RedHat - Upgrade
+  local_action:
+    module: yum
+    name: "*"
+    state: latest
+
+- name: RedHat - Install Python3
+  local_action:
+    module: yum
+    name: python3
+    state: latest
+
+- name: RedHat - Install pymongo
+  local_action:
+    module: pip
+    name: pymongo
+    state: latest
+
+- name: RedHat - Install MongoDB
+  local_action:
+    module: yum
+    name: mongodb-org
+    state: latest
+  notify: start mongodb
+
+- meta: flush_handlers
