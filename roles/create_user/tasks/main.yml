@@ -1,6 +1,7 @@
 ---
 - name: Create admin user and database
-  mongodb_user:
+  import_collection:
+    name: mongodb_user
     database: "{{ database }}"
     name: "{{ user }}"
     password: "{{ password }}"
