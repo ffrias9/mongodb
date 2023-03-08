@@ -11,7 +11,7 @@
 
 - name: RedHat - Install Python3
   yum:
-    name: "{{ items }}"
+    name: "{{ item }}"
     state: latest
   with_items:
     - python3
