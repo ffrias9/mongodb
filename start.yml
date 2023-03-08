@@ -5,12 +5,12 @@
   roles:
           #    - role: check_local
 
-    - role: check_OS
+#    - role: check_OS
 
-    - role: prerequisites
+ #   - role: prerequisites
 
-    - role: install
+  #  - role: install
 
-    - role: remote_access
+   # - role: remote_access
 
     - role: create_user
