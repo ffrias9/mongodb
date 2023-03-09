@@ -1,12 +1,13 @@
 ---
 - name: check mongodb
-  local_action:
-    module: package
+  run_once: true
+  package:
     name: mongodb-org
     state: present
   check_mode: true
   register: result
   ignore_errors: true
+  delegate_to: localhost
 
 - include_tasks: install.yml
   when: result.failed

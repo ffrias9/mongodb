@@ -1,33 +1,40 @@
 ---
 - name: RedHat - Copy the repository configuration file
-  local_action:
-    module: copy
-    src: mongodb.org-5.0.repo
-    dest: /etc/yum.repos.d/
+  run_once: true
+  copy:
+    src: mongodb.org.repo
+    dest: "/etc/yum.repos.d/mongodb.org-{{ version }}.repo"
+  delegate_to: localhost
+
+- name: RedHat - Specify in repo file the version
+  run_once: true
+  replace:
+    path: "/etc/yum.repos.d/mongodb.org-{{ version }}.repo"
+    regexp: mdbversion
+    replace: "{{ version }}"
+  delegate_to: localhost
 
 - name: RedHat - Upgrade
-  local_action:
-    module: yum
+  run_once: true
+  yum:
     name: "*"
     state: latest
-
-- name: RedHat - Install Python3
-  local_action:
-    module: yum
-    name: python3
-    state: latest
+  delegate_to: localhost
 
 - name: RedHat - Install pymongo
-  local_action:
-    module: pip
+  run_once: true
+  pip:
     name: pymongo
-    state: latest
+    version: "{{ pymongo_v }}"
+    state: present
+  delegate_to: localhost
 
 - name: RedHat - Install MongoDB
-  local_action:
-    module: yum
+  run_once: true
+  yum:
     name: mongodb-org
     state: latest
   notify: start mongodb
+  delegate_to: localhost
 
 - meta: flush_handlers

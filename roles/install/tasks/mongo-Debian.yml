@@ -5,11 +5,6 @@
     state: latest
   with_items:
     - mongodb-org
-    - mongodb-org-server
-    - mongodb-org-database
-    - mongodb-org-mongos
-    - mongodb-org-shell
-    - mongodb-org-tools
   notify: start mongodb
 
 - meta: flush_handlers

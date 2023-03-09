@@ -4,7 +4,7 @@
     src: mongodb.org.repo
     dest: "/etc/yum.repos.d/mongodb.org-{{ version }}.repo"
 
-- name: Specify in repo file the version
+- name: RedHat - Specify in repo file the version
   replace:
     path: "/etc/yum.repos.d/mongodb.org-{{ version }}.repo"
     regexp: mdbversion
@@ -23,4 +23,5 @@
 - name: RedHat - Install pymongo
   pip:
     name: pymongo
-    state: latest
+    version: "{{ pymongo_v }}"
+    state: present

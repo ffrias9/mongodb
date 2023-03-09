@@ -1,14 +1,16 @@
 ---
 - name: start mongodb
-  local_action:
-    module: service
+  run_once: true
+  service:
     name: mongod 
     state: started
     enabled: yes
+  delegate_to: localhost
 
 - name: restart mongodb
-  local_action:
-    module: systemd
+  run_once: true
+  systemd:
     name: mongod
     daemon_reload: True
     state: restarted
+  delegate_to: localhost
