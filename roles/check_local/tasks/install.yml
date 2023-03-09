@@ -19,6 +19,10 @@
   yum:
     name: "*"
     state: latest
+    exclude: "{{ item }}*"
+  with_items:
+    - ansible
+    - python
   delegate_to: localhost
 
 - name: RedHat - Install pymongo
