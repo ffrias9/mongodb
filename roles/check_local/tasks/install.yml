@@ -29,12 +29,9 @@
     state: present
   delegate_to: localhost
 
-- name: RedHat - Install MongoDB
+- name: RedHat - Install MongoDB client
   run_once: true
   yum:
-    name: mongodb-org
+    name: mongodb-org-shell
     state: latest
-  notify: start mongodb
   delegate_to: localhost
-
-- meta: flush_handlers

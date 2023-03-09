@@ -1,8 +1,8 @@
 ---
-- name: check mongodb
+- name: check if mongodb client is already installed
   run_once: true
   package:
-    name: mongodb-org
+    name: mongodb-org-shell
     state: present
   check_mode: true
   register: result
