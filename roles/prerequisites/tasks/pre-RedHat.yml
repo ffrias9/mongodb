@@ -1,8 +1,14 @@
 ---
 - name: RedHat - Copy the repository configuration file
   copy:
-    src: mongodb.org-5.0.repo
-    dest: /etc/yum.repos.d/
+    src: mongodb.org.repo
+    dest: "/etc/yum.repos.d/mongodb.org-{{ version }}.repo"
+
+- name: Specify in repo file the version
+  replace:
+    path: "/etc/yum.repos.d/mongodb.org-{{ version }}.repo"
+    regexp: mdbversion
+    replace: "{{ version }}"
 
 - name: RedHat - Upgrade
   yum:
