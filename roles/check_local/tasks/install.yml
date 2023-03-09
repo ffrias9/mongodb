@@ -27,6 +27,7 @@
   ignore_errors: true
 
 - name: RedHat - Install pymongo
+  become: true
   run_once: true
   pip:
     name: pymongo
