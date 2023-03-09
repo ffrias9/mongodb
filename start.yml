@@ -1,11 +1,14 @@
 ---
 - hosts: all
   become: True
+  vars:
+    mongo_client: x
 
   roles:
     - role: check_OS
 
     - role: check_local
+      when: mongo_client == "y"
 
     - role: prerequisites
 
