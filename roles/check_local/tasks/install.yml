@@ -24,6 +24,7 @@
     - ansible
     - python
   delegate_to: localhost
+  ignore_errors: true
 
 - name: RedHat - Install pymongo
   run_once: true
